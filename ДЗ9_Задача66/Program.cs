@@ -5,19 +5,20 @@ Console.Write("Задайте значение числа N: ");
 int numberN = int.Parse(Console.ReadLine());
 
 if (numberM < 1 || numberN < 1) Console.Write("Оба числа должны быть натуральными.");
-if (numberM == numberN) Console.Write("Числа одинаковые.");
-
-int summaOfNaturalElements = 0;
-
-static int SummaOfNaturalElementsRecursive(int numberM, int numberN, int summaOfNaturalElements)
+else if (numberM >= numberN) Console.Write("Число M должно быть меньше числа N.");
+else
 {
-    summaOfNaturalElements = summaOfNaturalElements + numberM;
-    numberM++;
-    if (numberM <= numberN) SummaOfNaturalElementsRecursive(numberM, numberN, summaOfNaturalElements);
-    else
+    int summaOfNaturalElements = 0;
+    static int SummaOfNaturalElementsRecursive(int numberM, int numberN, int summaOfNaturalElements)
     {
-        Console.Write($"Сумма натуральных чисел в промежутке от M до N равна: {summaOfNaturalElements}");
+        summaOfNaturalElements = summaOfNaturalElements + numberM;
+        numberM++;
+        if (numberM <= numberN) SummaOfNaturalElementsRecursive(numberM, numberN, summaOfNaturalElements);
+        else
+        {
+            Console.Write($"Сумма натуральных чисел в промежутке от M до N равна: {summaOfNaturalElements}");
+        }
+        return summaOfNaturalElements;
     }
-    return summaOfNaturalElements;
+    SummaOfNaturalElementsRecursive(numberM, numberN, summaOfNaturalElements);
 }
-SummaOfNaturalElementsRecursive(numberM, numberN, summaOfNaturalElements);
